@@ -4,8 +4,9 @@ internal class Player private constructor(
     private val name: String
 ) {
     companion object {
-        val SAM = Player("Sam")
-        val DEALER = Player("Dealer")
+        //make them functions instead so there won't be a need to empty hands every time
+        fun SAM() = Player("Sam")
+        fun DEALER() = Player("Dealer")
     }
 
     private val hand: MutableList<Card> = mutableListOf()
