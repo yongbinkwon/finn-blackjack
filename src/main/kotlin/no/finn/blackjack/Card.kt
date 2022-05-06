@@ -1,8 +1,8 @@
 package no.finn.blackjack
 
 internal class Card(
-    private val value: String,
-    private val suit: String
+    private val suit: String,
+    private val value: String
 ) {
     private val numericalValue = try {
         when(value) {
@@ -10,10 +10,10 @@ internal class Card(
             "Q" -> 10
             "K" -> 10
             "A" -> 11
-            else -> value.toInt()
+            else -> value.toInt().let { if (it > 0) it else throw NumberFormatException() }
         }
     } catch (e: NumberFormatException) {
-        0
+        throw NumberFormatException("Value of card $value is not a valid one")
     }
 
     operator fun plus(other: Int) = numericalValue + other

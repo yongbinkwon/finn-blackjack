@@ -7,9 +7,9 @@ internal class Deck(
 
     private fun generateDeckFromFile() = mutableListOf<Card>()
 
-    fun draw() = Card()
+    fun draw() = Card("C", "A")
 
     fun shuffle() {
-
+        return
     }
 }
