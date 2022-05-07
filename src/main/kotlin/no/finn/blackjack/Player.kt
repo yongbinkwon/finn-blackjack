@@ -28,10 +28,7 @@ internal class Player private constructor(
 
     fun twentyOne() = totalScore == 21
 
-    fun hit(card: Card) = hand.add(card).let {
-        totalScore = card + totalScore
-        totalScore
-    }
+    fun hit(card: Card) = hand.add(card).also { totalScore = card + totalScore }
 
     override fun toString(): String = "$name: ${hand.joinToString(separator = ", ")}"
 
