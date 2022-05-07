@@ -11,11 +11,14 @@ internal class Player private constructor(
 
     private val hand: MutableList<Card> = mutableListOf()
 
+    //clean but a little inefficient
     fun totalScore() = hand.fold(0) { total, current ->
         current + total
     }
 
     fun stand(threshold: Int = 17) = totalScore() >= threshold
+
+    fun bust() = totalScore() > 21
 
     fun hit(card: Card) = hand.add(card)
 
