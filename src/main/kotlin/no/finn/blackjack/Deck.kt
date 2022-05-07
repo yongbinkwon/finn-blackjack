@@ -16,6 +16,8 @@ internal class Deck(
                 .map { Card(it.substring(0, 1), it.substring(1)) }
         } ?: throw IllegalArgumentException("Deck file path $deckFilePath does not contain a file")
 
+    //should maybe shuffle deck when offset goes back to 0
+    //should maybe throw an exception when deck runs out instead of playing it out
     fun draw() = cards[offset].also { offset = (offset+1).mod(cards.size) }
 
     fun shuffle() {
