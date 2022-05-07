@@ -40,7 +40,7 @@ internal class Blackjack(
             }
             playOutRound(samScore, dealer)?.let {
                 printOutcome("DEALER", sam, dealer)
-                return sam
+                return dealer
             } ?: run {
                 printOutcome("SAM", sam, dealer)
                 return sam

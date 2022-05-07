@@ -20,9 +20,9 @@ class PlayerTest {
         listOf(Card("C", "A"), Card("H", "2"), Card("D", "4"))
             .forEach(player::hit)
         assertAll(
-            { assertTrue(player.stand(17)) },
             { assertTrue(player.stand(16)) },
-            { assertFalse(player.stand(18)) },
+            { assertTrue(player.stand(15)) },
+            { assertFalse(player.stand(17)) },
         )
     }
 
@@ -32,7 +32,7 @@ class PlayerTest {
         val player = Player.DEALER()
         listOf(Card("C", "A"), Card("H", "2"), Card("D", "4"))
             .forEach(player::hit)
-        val handStringRepresentation = "Dealer: CA, H2, D4"
+        val handStringRepresentation = "dealer: CA, H2, D4"
         assertEquals(handStringRepresentation, player.toString())
     }
 }
