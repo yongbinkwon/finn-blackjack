@@ -5,7 +5,7 @@ internal class Card(
     private val value: String
 ) {
     private val numericalValue = try {
-        when(value) {
+        when (value) {
             "J" -> 10
             "Q" -> 10
             "K" -> 10
@@ -19,4 +19,9 @@ internal class Card(
     operator fun plus(other: Int) = numericalValue + other
 
     override fun toString(): String = "$suit$value"
+
+    override fun equals(other: Any?): Boolean =
+        other is Card
+                && other.suit == suit
+                && other.value == value
 }
