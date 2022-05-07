@@ -9,9 +9,9 @@ class PlayerTest {
     @Test
     fun `check that totalScore() matches cards gained from hit()`() {
         val player = Player.SAM()
-        listOf(Card("C", "A"), Card("H", "2"), Card("D", "7"))
-            .forEach(player::hit)
-        assertEquals(20, player.totalScore())
+        val deck = listOf(Card("C", "A"), Card("H", "2"), Card("D", "7"))
+        deck.dropLast(1).forEach(player::hit)
+        assertEquals(20, player.hit(deck.last()))
     }
 
     @Test

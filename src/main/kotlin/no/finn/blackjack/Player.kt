@@ -10,19 +10,28 @@ internal class Player private constructor(
     }
 
     private val hand: MutableList<Card> = mutableListOf()
+    private var totalScore = 0
 
+    /*
     //clean but a little inefficient
     fun totalScore() = hand.fold(0) { total, current ->
         current + total
     }
+     */
 
-    fun stand(threshold: Int = 16) = totalScore() > threshold
+    fun stand(threshold: Int = 16) = totalScore > threshold
 
-    fun bust() = totalScore() > 21
+    //in the case of multiple players this would be list of players and max of totalScore
+    fun stand(opponent: Player) = totalScore > opponent.totalScore
 
-    fun twentyOne() = totalScore() == 21
+    fun bust() = totalScore > 21
 
-    fun hit(card: Card) = hand.add(card)
+    fun twentyOne() = totalScore == 21
+
+    fun hit(card: Card) = hand.add(card).let {
+        totalScore = card + totalScore
+        totalScore
+    }
 
     override fun toString(): String = "$name: ${hand.joinToString(separator = ", ")}"
 
