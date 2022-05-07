@@ -32,7 +32,7 @@ class DeckTest {
     }
 
     @Test
-    //chance of this failing with a 4 card deck is less than 1*10^-6
+    //chance of this failing with a 4 card deck is less than 1*10^-6 given that shuffle is properly randomized
     //not sure if necessary
     fun `shuffle is random`() {
         val deck1 = Deck("/TestDeck.txt")
