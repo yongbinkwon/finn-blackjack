@@ -31,9 +31,10 @@ internal class Blackjack(
         startRound(sam, dealer)?.let { result ->
             return result
         } ?: run {
-            //could also check for 21 from sam here but gonna let it play out naturally
             playOutRound(16, sam)
             if (sam.bust()) return BlackjackResult(dealer, sam)
+            //could let it play out naturally but dealer won't take a tie so sam will always win with 21
+            if (sam.twentyOne()) return BlackjackResult(sam, dealer)
 
             playOutRound(sam, dealer)
             if (dealer.bust()) return BlackjackResult(sam, dealer)

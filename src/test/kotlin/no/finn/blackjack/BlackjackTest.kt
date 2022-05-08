@@ -42,7 +42,7 @@ internal class BlackjackTest {
     }
 
     @Test
-    fun `if dealer busts sam win without further moves`() {
+    fun `if dealer busts sam wins`() {
         val blackJack = Blackjack(Deck("/BlackjackTest/DealerBusts.txt"))
         val results = blackJack.playRoundOfBlackjack()
         assertEquals(Player.SAM(), results.winner)
@@ -65,6 +65,13 @@ internal class BlackjackTest {
     @Test
     fun `sam can stand just based on starting hand`() {
         val blackJack = Blackjack(Deck("/BlackjackTest/SamStandStartingHand.txt"))
+        val results = blackJack.playRoundOfBlackjack()
+        assertEquals(Player.SAM(), results.winner)
+    }
+
+    @Test
+    fun `sam wins without further moves if they get 21`() {
+        val blackJack = Blackjack(Deck("/BlackjackTest/Both21.txt"))
         val results = blackJack.playRoundOfBlackjack()
         assertEquals(Player.SAM(), results.winner)
     }
