@@ -12,12 +12,12 @@ internal class Blackjack(
         dealer.hit(draw())
 
         //if both have 21 sam wins
-        if (sam.twentyOne()) return BlackjackResult(sam, dealer)
-        if (dealer.twentyOne()) return BlackjackResult(dealer, sam)
+        if (sam.twentyOne()) return BlackjackResult(winner = sam, loser = dealer)
+        if (dealer.twentyOne()) return BlackjackResult(winner = dealer, loser = sam)
 
         //if both bust dealer wins
-        if (sam.bust()) return BlackjackResult(dealer, sam)
-        if (dealer.bust()) return BlackjackResult(sam, dealer)
+        if (sam.bust()) return BlackjackResult(winner = dealer, loser = sam)
+        if (dealer.bust()) return BlackjackResult(winner = sam, loser = dealer)
 
         return null
     }
@@ -32,13 +32,13 @@ internal class Blackjack(
             return result
         } ?: run {
             playOutRound(16, sam)
-            if (sam.bust()) return BlackjackResult(dealer, sam)
+            if (sam.bust()) return BlackjackResult(winner = dealer, loser = sam)
             //could let it play out naturally but dealer won't take a tie so sam will always win with 21
-            if (sam.twentyOne()) return BlackjackResult(sam, dealer)
+            if (sam.twentyOne()) return BlackjackResult(winner = sam, loser = dealer)
 
             playOutRound(sam, dealer)
-            if (dealer.bust()) return BlackjackResult(sam, dealer)
-            else return BlackjackResult(dealer, sam)
+            if (dealer.bust()) return BlackjackResult(winner = sam, loser = dealer)
+            else return BlackjackResult(winner = dealer, loser = sam)
         }
     }
 
