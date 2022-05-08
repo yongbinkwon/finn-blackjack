@@ -6,10 +6,24 @@ import org.junit.jupiter.api.Test
 //just testing winners and not scores, because don't want to expose scores just for test purposes
 internal class BlackjackTest {
 
+    private fun Player.hitMultiple(n: Int, deck: Deck) {
+        for (i in 1..n) {
+            hit(deck.draw())
+        }
+    }
+
     @Test
     fun `if sam gets a blackjack they win`() {
-        val blackJack = Blackjack(Deck("/BlackjackTest/SamBlackjack.txt"))
+        val actualDeck = Deck("/BlackjackTest/SamBlackjack.txt")
+        val blackJack = Blackjack(actualDeck)
         val results = blackJack.playRoundOfBlackjack()
+
+        val expectedDeck = Deck("/BlackjackTest/SamBlackjack.txt")
+        val expectedSam = Player.SAM()
+        val expectedDealer = Player.DEALER()
+
+        expectedSam.hitMultiple(2, expectedDeck)
+
         assertEquals(Player.SAM(), results.winner)
     }
 

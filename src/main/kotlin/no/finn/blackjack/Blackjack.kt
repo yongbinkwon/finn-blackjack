@@ -6,9 +6,9 @@ internal class Blackjack(
 
     private fun startRound(sam: Player, dealer: Player): BlackjackResult? {
         sam.hit(draw())
-        sam.hit(draw())
-
         dealer.hit(draw())
+
+        sam.hit(draw())
         dealer.hit(draw())
 
         //if both have 21 sam wins
@@ -62,7 +62,7 @@ internal data class BlackjackResult(
     val loser: Player,
 ) {
     fun outcome() =
-        if (winner == Player.SAM()) {
+        if (winner.isSam()) {
             "WINNER: SAM\n" +
                     "$winner\n" +
                     "$loser"

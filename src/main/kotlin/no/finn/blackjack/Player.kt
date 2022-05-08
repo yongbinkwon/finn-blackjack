@@ -5,6 +5,7 @@ internal class Player private constructor(
 ) {
     companion object {
         //make them functions instead so there won't be a need to empty hands every time
+        //should make names env variables
         fun SAM() = Player("sam")
         fun DEALER() = Player("dealer")
     }
@@ -18,6 +19,9 @@ internal class Player private constructor(
         current + total
     }
      */
+
+    fun isSam() = name == "sam"
+    fun isDealer() = name == "dealer"
 
     fun stand(threshold: Int = 16) = totalScore > threshold
 
@@ -34,6 +38,8 @@ internal class Player private constructor(
 
     override fun equals(other: Any?) =
         other is Player &&
-                other.name == name
+                other.name == name &&
+                other.hand.size == hand.size &&
+                hand.containsAll(other.hand)
 
 }
