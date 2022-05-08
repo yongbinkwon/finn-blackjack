@@ -1,5 +1,6 @@
 plugins {
-    kotlin("jvm") version "1.5.10"
+    kotlin("jvm") version "1.5.30"
+    application
 }
 
 group = "org.example"
@@ -9,8 +10,12 @@ repositories {
     mavenCentral()
 }
 
+application {
+    mainClass.set("no.finn.blackjack.BlackjackApplicationKt")
+}
+
 dependencies {
-    implementation(kotlin("stdlib"))
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.2")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.2")
@@ -18,4 +23,8 @@ dependencies {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+tasks.named<JavaExec>("run") {
+    standardInput = System.`in`
 }

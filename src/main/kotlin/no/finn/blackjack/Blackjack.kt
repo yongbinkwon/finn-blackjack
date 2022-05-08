@@ -1,7 +1,7 @@
 package no.finn.blackjack
 
 internal class Blackjack(
-    private val deck: Deck
+    private val deck: Deck = Deck()
 ) {
 
     private fun startRound(sam: Player, dealer: Player): BlackjackResult? {
