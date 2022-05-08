@@ -1,1 +1,1 @@
-CA, D10, HA, S2
+CA, HA, D10, S2

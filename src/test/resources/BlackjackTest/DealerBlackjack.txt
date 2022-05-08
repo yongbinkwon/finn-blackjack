@@ -1,1 +1,1 @@
-CA, D2, HA, SJ
+CA, HA, D2, SJ
