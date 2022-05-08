@@ -1,10 +1,17 @@
 package no.finn.blackjack
 
+private val YES_INPUTS = listOf("y", "yes")
+private val NO_INPUTS = listOf("n", "no")
+private val QUIT_INPUTS = listOf("quit", "q")
+private val SERIES_OF_WHITESPACE_REGEX = Regex("(\\s+)")
+
 fun main() {
     println("Welcome to this game of blackjack! You can quit at any time by entering 'q' or 'quit'")
-    while(true) {
-        println("Enter the filename of the text file you want to use as a deck (inside the resources folder) " +
-                "or enter nothing if you want to use a predefined deck of 52 unique cards")
+    while (true) {
+        println(
+            "Enter the filename of the text file you want to use as a deck (inside the resources folder) " +
+                    "or enter nothing if you want to use a predefined deck of 52 unique cards"
+        )
         val deckName = readInput() ?: return
         while (true) {
             try {
@@ -25,11 +32,6 @@ fun main() {
         }
     }
 }
-
-private val YES_INPUTS = listOf("y", "yes")
-private val NO_INPUTS = listOf("n", "no")
-private val QUIT_INPUTS = listOf("quit", "q")
-private val SERIES_OF_WHITESPACE_REGEX = Regex("(\\s+)")
 
 private fun addTrailingSlash(filePath: String) = if (filePath.first() == '/') filePath else "/$filePath"
 

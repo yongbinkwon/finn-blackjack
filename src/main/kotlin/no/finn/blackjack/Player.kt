@@ -39,7 +39,7 @@ internal class Player private constructor(
     override fun equals(other: Any?) =
         other is Player &&
                 other.name == name &&
-                other.hand.size == hand.size &&
-                hand.containsAll(other.hand)
+                //not containsAll+hand.size comparison because the order of cards drawn should also be equal imo
+                other.hand == hand
 
 }
