@@ -1,4 +1,4 @@
-#BLACKJACK KODEOPPGAVE
+# BLACKJACK KODEOPPGAVE
 
 For å kjøre konsoll-applikasjonen enten:
 
